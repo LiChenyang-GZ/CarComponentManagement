@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+
+</head>
+<body>
+<h1>Update Mapping</h1>
+<span>
+    <button onclick="window.location.href = 'http://localhost:5000/mappings'">
+    Cancel
+    </button>
+</span>
+</body>
+<form id="mappingForm" style="margin: 1em" action="/updateMapping" method="get" novalidate>
+    <label for="id">Mapping ID:</label>
+    <input id="id" name="id" type="text">
+    <br>
+    <hr>
+    <label for="failCode">fail code:</label>
+    <input id="failCode" name="failCode" type="text">
+    <br>
+    <hr>
+    <label for="component">component:</label>
+    <select id="component" name="component" form="mappingForm">
+        {% for row in components %}
+        <option value="{{ row[0] }}">{{ row[1] }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <hr>
+    <label for="failMode">fail mode:</label>
+    <select id="failMode" name="failMode" form="mappingForm">
+        {% for row in failmodes %}
+        <option value="{{ row[0] }}">{{ row[1] }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <hr>
+    <input type="submit" value="update">
+</form>
+</html>

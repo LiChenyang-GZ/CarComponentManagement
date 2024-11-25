@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<body>
+
+<table border = 1>
+         <thead>
+            <td>Top 3 of the highest PFR(product failure rate) manufactory</td>
+            <td>Average fail rate</td>
+         </thead>
+
+         {% for row in rows %}
+            <tr>
+               <td>{{row[0]}}</td>
+               <td>{{row[1]}}</td>
+            </tr>
+         {% endfor %}
+      </table>
+
+</body>
+</html>

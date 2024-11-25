@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+
+</head>
+<body>
+<h1>Add Component</h1>
+<span>
+    <button onclick="window.location.href = 'http://localhost:5000/components'">
+    Cancel
+    </button>
+</span>
+</body>
+<form style="margin: 1em" action="/addComponent" method="get" novalidate>
+    <label for="componentName">component name:</label>
+    <input id="componentName" name="componentName" type="text">
+    <br>
+    <hr>
+    <label for="componentContact">component contact:</label>
+    <input id="componentContact" name="componentContact" type="text">
+    <br>
+    <hr>
+    <label for="componentManufacturer">component manufacturer:</label>
+    <input id="componentManufacturer" name="componentManufacturer" type="text">
+    <br>
+    <hr>
+    <label for="fail_rate">component fail rate:</label>
+    <input id="fail_rate" name="fail_rate" type="text">
+    <br>
+    <hr>
+    <input type="submit" value="add">
+</form>
+</html>

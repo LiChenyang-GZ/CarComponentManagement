@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+
+</head>
+<body>
+<h1>Update Fail Mode</h1>
+<span>
+    <button onclick="window.location.href = 'http://localhost:5000/components'">
+    Cancel
+    </button>
+</span>
+</body>
+<form style="margin: 1em" action="/updateFailMode" method="get" novalidate>
+    <label for="failModeId">fail mode id:</label>
+    <input id="failModeId" name="failModeId" type="text">
+    <br>
+    <hr>
+    <label for="failModeName">fail mode name:</label>
+    <input id="failModeName" name="failModeName" type="text">
+    <br>
+    <hr>
+    <label for="failModeDes">fail mode description:</label>
+    <input id="failModeDes" name="failModeDes" type="text">
+    <br>
+    <hr>
+    <input type="submit" value="update">
+</form>
+</html>

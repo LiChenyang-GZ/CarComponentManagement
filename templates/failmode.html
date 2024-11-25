@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <script type=text/javascript
+            src="{{ url_for('static', filename='js/jquery-1.11.3.min.js') }}"></script>
+</head>
+<body>
+<h1>Fail Modes</h1>
+<span>
+    <button onclick="window.location.href = 'http://localhost:5000'">
+    Index
+    </button>
+    <button onclick="window.location.href = 'http://localhost:5000/addFailmode'">
+    Add fail mode
+    </button>
+    <button onclick="window.location.href = 'http://localhost:5000/updateFailMode'">
+    Update fail mode
+    </button>
+</span>
+{% for row in response %}
+    <div style="margin-top: 1em;border: 1px solid black" name="failmode_{{ row[0] }}">
+        fail mode ID: {{ row[0] }}
+        <br>
+        fail mode name: {{ row[1] }}
+        <br>
+        <button style="margin: 1em" onclick="removeFailMode('{{ row[0] }}')">remove</button>
+    </div>
+{% endfor %}
+<script type=text/javascript>
+    function removeFailMode(id) {
+        $.ajax({
+            url: 'http://localhost:5000/removeFailmode',
+            type: 'GET',
+            dataType: 'JSON',
+            data: {
+                id: id
+            },
+            success: function (_mdata) {
+                console.log(_mdata)
+                $("[name=failmode_" + _mdata[0] + "]").fadeOut(function () {
+                    $("[name=failmode_" + _mdata[0] + "]").remove()
+                })
+            }
+        })
+    }
+</script>
+</body>
+</html>

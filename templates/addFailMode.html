@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+
+</head>
+<body>
+<h1>Add Fail Mode</h1>
+<span>
+    <button onclick="window.location.href = 'http://localhost:5000/failmodes'">
+    Cancel
+    </button>
+</span>
+</body>
+<form style="margin: 1em" action="/addFailmode" method="get" novalidate>
+    <label for="failModeName">fail mode name:</label>
+    <input id="failModeName" name="failModeName" type="text">
+    <br>
+    <hr>
+    <label for="failModeDes">fail mode description:</label>
+    <input id="failModeDes" name="failModeDes" type="text">
+    <br>
+    <hr>
+    <input type="submit" value="add">
+</form>
+</html>

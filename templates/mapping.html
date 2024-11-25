@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <script type=text/javascript
+            src="{{ url_for('static', filename='js/jquery-1.11.3.min.js') }}"></script>
+</head>
+<body>
+<h1>Mappings</h1>
+<span>
+    <button onclick="window.location.href = 'http://localhost:5000'">
+    Index
+    </button>
+    <button onclick="window.location.href = 'http://localhost:5000/addMapping'">
+    Add mapping
+    </button>
+    <button onclick="window.location.href = 'http://localhost:5000/updateMapping'">
+    Update mapping
+    </button>
+</span>
+{% for row in response %}
+    <div style="margin-top: 1em;border: 1px solid black" name="mapping_{{ row[0] }}">
+        mapping ID: {{ row[0] }}
+        <br>
+        fail code: {{ row[1] }}
+        <br>
+        component: {{ row[2] }}
+        <br>
+        fail mode: {{ row[3] }}
+        <br>
+        <button style="margin: 1em" onclick="removeMapping('{{ row[0] }}')">remove</button>
+    </div>
+{% endfor %}
+<script type=text/javascript>
+    function removeMapping(id) {
+        $.ajax({
+            url: 'http://localhost:5000/removeMapping',
+            type: 'GET',
+            dataType: 'JSON',
+            data: {
+                id: id
+            },
+            success: function (_mdata) {
+                console.log(_mdata)
+                $("[name=mapping_" + _mdata[0] + "]").fadeOut(function () {
+                    $("[name=mapping_" + _mdata[0] + "]").remove()
+                })
+            }
+        })
+    }
+</script>
+</body>
+</html>
